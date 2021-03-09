@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-function UserOptions() {
+function UserOptions({ onBeginPress }) {
+  const [beginVisible, setBeginVisible] = useState(false);
+
   return (
     <div className="options-wrapper">
       <div className="time-options">
         <ul>
-          <li className="time-opt" id="time-opt-5">
+          <li
+            className="time-opt"
+            id="time-opt-5"
+            onClick={() => setBeginVisible(true)}
+          >
             5min
           </li>
-          <li className="time-opt" id="time-opt-15">
+          <li
+            className="time-opt"
+            id="time-opt-15"
+            onClick={() => setBeginVisible(true)}
+          >
             15min
           </li>
-          <li className="time-opt" id="time-opt-30">
+          <li
+            className="time-opt"
+            id="time-opt-30"
+            onClick={() => setBeginVisible(true)}
+          >
             30min
           </li>
         </ul>
@@ -44,7 +58,12 @@ function UserOptions() {
           </li>
         </ul>
       </div>
-      <button className="begin-button">Begin</button>
+      {/* hide/show begin button based on beginVisible state value */}
+      {beginVisible ? (
+        <button className="begin-button" onClick={onBeginPress}>
+          Begin
+        </button>
+      ) : null}
     </div>
   );
 }

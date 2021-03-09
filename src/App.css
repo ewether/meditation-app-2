@@ -135,7 +135,7 @@ body {
 }
 
 .begin-button {
-  opacity: 0;
+  /* opacity: 0; */
   border: none;
   width: 120px;
   height: 36px;
@@ -147,7 +147,7 @@ body {
 
 .countdown-timer {
   /* display: none; */
-  opacity: 0;
+  /* opacity: 0; */
   transition: all 0.25s ease-in-out;
   position: absolute;
   top: 50%;
