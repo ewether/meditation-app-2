@@ -53,7 +53,8 @@ html {
 body {
   height: 100%;
   width: 100%;
-  color: white;
+  background-color: #c6c3e0;
+  color: "#FFF"
 }
 
 .container {
@@ -63,6 +64,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
 }
 
 .main-wrapper {
@@ -71,7 +73,6 @@ body {
 
 .on-load-text {
   font-size: 58px;
-  /* opacity: 0; */
   opacity: 1;
   position: absolute;
   top: 45%;
