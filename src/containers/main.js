@@ -1,26 +1,43 @@
-// import logo from '../logo.svg';
+import React, {useState, useEffect} from "react";
+import Counter from './Counter'
+import Options from './Options'
+import OnLoadText from '../components/OnLoadText';
+import Countdown from "../components/Countdown";
+import AllUserOptions from "../components/AllUserOptions";
 
 function Main() {
-  return (
-      <div>
-          <h1>Hello World</h1>
+  const [showTitle, setShowTitle] = useState(true)
+  const [showCounter, setShowCounter] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowTitle(false)
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Use an empty dependency array
+  // to run useEffect once on mount
+
+  if (showTitle) {
+    return (
+      <div className="container">
+        <section className="main-wrapper">
+          <OnLoadText/>
+        </section>
       </div>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
+    )
+  }
+  return (
+    <div className="options-wrapper">
+      {showCounter ? (
+        <>
+        <Countdown />
+        </>
+      ) : (
+        <AllUserOptions onBeginPress={() => setShowCounter(true)} />
+      )}
+    </div>
   );
 }
 
