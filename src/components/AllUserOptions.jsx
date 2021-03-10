@@ -1,28 +1,36 @@
 import React, {useState, useEffect} from 'react';
 
-function AllUserOptions({ onBeginPress }) {
+function AllUserOptions({ onBeginPress, timeClick }) {
     const [start, setStart] = useState(false);
     const [time, setTime] = useState(0);
     const [beginVisible, setBeginVisible] = useState(false);
 
     useEffect(() => {
         if (start) {
-            setTime(15);
+            setTime(time);
         };
+        console.log(time);
       }, [start]);
+
+    // on time-opt click, setBeginVisible = true and setTime = given time
+    function timeClick(time) {
+        setBeginVisible(true);
+        setTime(time);
+        console.log(time);
+    }
 
     return (
         <>
             <div className="time-options">
                 <ul>
-                    <li className="time-opt" id="time-opt-5" onClick={() => setBeginVisible(true)}>
-                        5min
+                    <li className="time-opt" id="time-opt-5" onClick={() => timeClick(5)}>
+                        5 min
                     </li>
-                    <li className="time-opt" id="time-opt-15" onClick={() => setBeginVisible(true)}>
-                        {time}
+                    <li className="time-opt" id="time-opt-15" onClick={() => timeClick(15)}>
+                        15 min
                     </li>
-                    <li className="time-opt" id="time-opt-30" onClick={() => setBeginVisible(true)}>
-                        30min
+                    <li className="time-opt" id="time-opt-30" onClick={() => timeClick(30)}>
+                        30 min
                     </li>
                 </ul>
             </div>

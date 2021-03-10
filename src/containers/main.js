@@ -8,6 +8,7 @@ import AllUserOptions from "../components/AllUserOptions";
 function Main() {
   const [showTitle, setShowTitle] = useState(true)
   const [showCounter, setShowCounter] = useState(false);
+  // const [time, setTime] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
