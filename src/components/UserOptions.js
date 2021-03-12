@@ -72,7 +72,11 @@ function UserOptions({ onBeginPress }) {
       {beginVisible ? (
         <button
           className="begin-button"
-          onClick={() => onBeginPress(timerCount)}
+          onClick={() => {
+            // pass clicked on timer count
+            // to the main container
+            onBeginPress(timerCount);
+          }}
         >
           Begin
         </button>
