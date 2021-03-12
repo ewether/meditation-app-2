@@ -1,12 +1,13 @@
 import React, { useState, useRef } from "react";
-import AllUserOptions from "../components/AllUserOptions";
+// import { FaTimes } from 'react-icons/fa'
+import { library } from '@fortawesome/fontawesome-svg-core'
 
 function padTime(time) {
   return time.toString().padStart(2, "0");
 }
 
 function Countdown({count}) {
-  console.log({count});
+  console.log("count", count);
   const [timeLeft, setTimeLeft] = useState({count} * 60);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
@@ -55,8 +56,10 @@ function Countdown({count}) {
         {isRunning && <button className="stop-btn"  onClick={stopTimer}>Stop</button>}
         <button className="reset-btn" onClick={resetTimer}>Reset</button>
       </div>
-      <div className="back">
-        <button className="back-btn">Back</button>
+      <div className="cancel">
+        <button className="cancel-btn">
+            {/* <FaTimes /> */}
+        </button>
       </div>
     </div>
   );
