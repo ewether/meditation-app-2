@@ -40,7 +40,7 @@ body {
   height: 100%;
   width: 100%;
   background-color: #c6c3e0;
-  color: "#FFF";
+  color: #FFF;
 }
 
 .container {
@@ -164,4 +164,9 @@ body {
 .start-btn, .stop-btn, .reset-btn {
   width: 92px;
   margin: 0;
+}
+
+.cancel {
+  display: flex;
+  
 }
