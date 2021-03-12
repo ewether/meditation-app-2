@@ -6,6 +6,8 @@ import Countdown from "../components/Countdown";
 function Main() {
   const [loading, setLoading] = useState(true);
   const [showCounter, setShowCounter] = useState(false);
+  const [countdown, setCountdown] = useState(5);
+  console.log("🚀 ~ file: main.js ~ line 10 ~ Main ~ countdown", countdown);
 
   // Use an empty dependency array
   // to run useEffect once on mount
@@ -25,7 +27,12 @@ function Main() {
       {showCounter ? (
         <Countdown />
       ) : (
-        <UserOptions onBeginPress={() => setShowCounter(true)} />
+        <UserOptions
+          onBeginPress={(timerCount) => {
+            setShowCounter(true);
+            setCountdown(timerCount);
+          }}
+        />
       )}
     </div>
   );
