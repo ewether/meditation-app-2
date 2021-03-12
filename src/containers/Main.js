@@ -24,12 +24,15 @@ function Main() {
   }
   return (
     <div className="main">
+      {/* Here we pass the countdown state as prop count to CountDown */}
       {showCounter ? (
-        <Countdown />
+        <Countdown count={countdown} />
       ) : (
         <UserOptions
           onBeginPress={(timerCount) => {
             setShowCounter(true);
+            // set the correct state of
+            // the selected counter in countdown
             setCountdown(timerCount);
           }}
         />

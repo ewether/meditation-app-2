@@ -4,8 +4,11 @@ function padTime(time) {
   return time.toString().padStart(2, "0");
 }
 
+// Countdown receives the countdown value from
+// the main container through the {count} prop
 function Countdown({ count }) {
-  const [timeLeft, setTimeLeft] = useState(25 * 60);
+  // set the value of count to the state so our counter can use it
+  const [timeLeft, setTimeLeft] = useState(count * 60);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
 
