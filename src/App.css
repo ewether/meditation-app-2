@@ -1,69 +1,62 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-weight: 300;
   letter-spacing: 2px;
+  background-color: #e1e5f2;
 }
 
-html {
-  height: 100%;
-  width: 100%;
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+button {
+  border: none;
+  width: 120px;
+  height: 36px;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-top: 40px;
+  transition: opacity 0.5s ease-in-out;
+  background-color: #fff;
+  color: #1f2124;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #fcfcfc;
+  cursor: pointer;
 }
 
 body {
   height: 100%;
   width: 100%;
   background-color: #c6c3e0;
+<<<<<<< HEAD
   color: "#FFF"
+=======
+  color: "#FFF";
+>>>>>>> countdown
 }
 
 .container {
   height: 100%;
   width: 100%;
-  background-color: #c6c3e0;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+<<<<<<< HEAD
+=======
+  justify-content: center;
+  margin-top: 120px;
+>>>>>>> countdown
   text-align: center;
 }
 
@@ -72,6 +65,7 @@ body {
 }
 
 .on-load-text {
+  color: #7c8699;
   font-size: 58px;
   opacity: 1;
   position: absolute;
@@ -100,6 +94,7 @@ body {
   transition: all 0.5s ease-in-out;
   font-family: 'Fira Sans', sans-serif;
   font-size: 16px;
+  color: #FFF;
 }
 
 .time-options ul {
@@ -111,18 +106,19 @@ body {
   list-style-type: none;
   padding: 18px 14px;
   border-radius: 5px;
-  background-color: #676582;
+  background-color: #7c8699;
 }
 
 .time-opt:hover, .music-opt:hover {
   cursor: pointer;
+  background-color: #757e8f;
 }
 
 .music-options ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 30px auto 0;
+  margin: 20px auto 0;
 }
 
 .music-opt {
@@ -130,31 +126,49 @@ body {
   list-style-type: none;
   padding: 38px 20px;
   border-radius: 5px;
-  background-color: #676582;
+  background-color: #7c8699;
   margin-top: 20px;
 }
 
 .begin-button {
-  /* opacity: 0; */
   border: none;
   width: 120px;
   height: 36px;
   border-radius: 4px;
   margin-left: auto;
   margin-top: 40px;
-  transition: all 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  background-color: #fff;
+  color: #1f2124;
+}
+
+.begin-button:hover {
+  background-color: #fcfcfc;
+  cursor: pointer;
 }
 
 .countdown-timer {
-  /* display: none; */
-  /* opacity: 0; */
   transition: all 0.25s ease-in-out;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-top: -50px;
-  margin-left: -100px;
+  margin-left: -150px;
   font-size: 32px;
-  /* width: 200px; */
-  /* height: 200px; */
+}
+
+.time-left {
+  font-size: 44px;
+}
+
+.buttons {
+  width: 300px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+.start-btn, .stop-btn, .reset-btn {
+  width: 92px;
+  margin: 0;
 }

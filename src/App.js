@@ -5,7 +5,9 @@ import "./App.css";
 function App() {
   return (
     <div className="container">
-      <Main />
+      <section className="main-wrapper">
+        <Main />
+      </section>
     </div>
   );
 }
