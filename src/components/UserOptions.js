@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function UserOptions({ onBeginPress }) {
   const [beginVisible, setBeginVisible] = useState(false);
+  const [timerCount, setTimerCount] = useState(5);
 
   return (
     <div className="options-wrapper">
@@ -10,21 +11,30 @@ function UserOptions({ onBeginPress }) {
           <li
             className="time-opt"
             id="time-opt-5"
-            onClick={() => setBeginVisible(true)}
+            onClick={() => {
+              setTimerCount(5);
+              setBeginVisible(true);
+            }}
           >
             5min
           </li>
           <li
             className="time-opt"
             id="time-opt-15"
-            onClick={() => setBeginVisible(true)}
+            onClick={() => {
+              setTimerCount(15);
+              setBeginVisible(true);
+            }}
           >
             15min
           </li>
           <li
             className="time-opt"
             id="time-opt-30"
-            onClick={() => setBeginVisible(true)}
+            onClick={() => {
+              setTimerCount(30);
+              setBeginVisible(true);
+            }}
           >
             30min
           </li>
@@ -60,7 +70,10 @@ function UserOptions({ onBeginPress }) {
       </div>
       {/* hide/show begin button based on beginVisible state value */}
       {beginVisible ? (
-        <button className="begin-button" onClick={onBeginPress}>
+        <button
+          className="begin-button"
+          onClick={() => onBeginPress(timerCount)}
+        >
           Begin
         </button>
       ) : null}
