@@ -7,17 +7,15 @@ function AllUserOptions({ onBeginPress, timeClick }) {
 
     useEffect(() => {
         if (start) {
-            setTime(time);
+            setStart();
         };
-        console.log(time);
       }, [start]);
 
-    // on time-opt click, setBeginVisible = true and setTime = given time
-    function timeClick(time) {
+      function timeClick(time) {
         setBeginVisible(true);
         setTime(time);
-        console.log(time);
-    }
+        // console.log(time);
+      }
 
     return (
         <>

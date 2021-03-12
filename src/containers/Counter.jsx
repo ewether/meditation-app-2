@@ -11,9 +11,9 @@ function Counter() {
     });
 
   return (
-    <div>
-        <Countdown time = {timeLeft} />
-    </div>
+    <>
+        <Countdown count={15} />
+    </>
   );
 }
 

@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from "react";
-import Counter from './Counter'
-import Options from './Options'
 import OnLoadText from '../components/OnLoadText';
 import Countdown from "../components/Countdown";
 import AllUserOptions from "../components/AllUserOptions";
@@ -8,7 +6,14 @@ import AllUserOptions from "../components/AllUserOptions";
 function Main() {
   const [showTitle, setShowTitle] = useState(true)
   const [showCounter, setShowCounter] = useState(false);
-  // const [time, setTime] = useState(0);
+  const [timer, setTimer] = useState(0);
+
+  const [counterCount, setCounterCount] = useState(15);
+
+  // on time-opt click, setBeginVisible = true and setTime = given time
+  // function timeClick(time) {
+  //   setTimer(time);
+  // }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -32,11 +37,14 @@ function Main() {
   return (
     <div className="options-wrapper">
       {showCounter ? (
+        // count is set to the value of timer
         <>
-        <Countdown />
+        <Countdown count={counterCount} />
         </>
       ) : (
-        <AllUserOptions onBeginPress={() => setShowCounter(true)} />
+        // on begin press, timer is set to the users time choice
+        <AllUserOptions onBeginPress={() => setShowCounter(true)} timeClick={(value) => 
+          setTimer(value)} />
       )}
     </div>
   );
