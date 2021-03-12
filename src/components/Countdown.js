@@ -37,7 +37,7 @@ function Countdown({ count }) {
   function resetTimer() {
     clearInterval(intervalRef.current);
     intervalRef.current = null;
-    setTimeLeft(25 * 60);
+    setTimeLeft(count * 60);
     setIsRunning(false);
   }
 
