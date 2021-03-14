@@ -1,13 +1,12 @@
 import React, { useState, useRef } from "react";
-import AllUserOptions from "../components/AllUserOptions";
 
 function padTime(time) {
   return time.toString().padStart(2, "0");
 }
 
-function Countdown({count}) {
+function Countdown({count, onBackClick}) {
   console.log({count});
-  const [timeLeft, setTimeLeft] = useState({count} * 60);
+  const [timeLeft, setTimeLeft] = useState(count * 60);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
 
@@ -36,7 +35,7 @@ function Countdown({count}) {
   function resetTimer() {
     clearInterval(intervalRef.current);
     intervalRef.current = null;
-    setTimeLeft(25 * 60);
+    setTimeLeft(count * 60);
     setIsRunning(false);
   }
 
@@ -56,7 +55,7 @@ function Countdown({count}) {
         <button className="reset-btn" onClick={resetTimer}>Reset</button>
       </div>
       <div className="back">
-        <button className="back-btn">Back</button>
+        <button className="back-btn" onClick={onBackClick}>Back</button>
       </div>
     </div>
   );
