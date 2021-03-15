@@ -6,14 +6,8 @@ import AllUserOptions from "../components/AllUserOptions";
 function Main() {
   const [showTitle, setShowTitle] = useState(true)
   const [showCounter, setShowCounter] = useState(false);
-  const [timer, setTimer] = useState(0);
-
+  const [showOptions, setShowOptions] = useState(false);
   const [counterCount, setCounterCount] = useState(15);
-
-  // on time-opt click, setBeginVisible = true and setTime = given time
-  // function timeClick(time) {
-  //   setTimer(time);
-  // }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,13 +18,22 @@ function Main() {
 
   // Use an empty dependency array
   // to run useEffect once on mount
-
   if (showTitle) {
     return (
       <div className="container">
         <section className="main-wrapper">
-          <OnLoadText/>
+          <OnLoadText />
         </section>
+      </div>
+    )
+  }
+  if (showOptions) {
+    return (
+      <div className="options-wrapper">
+        <>
+        <AllUserOptions onBeginPress={() => setShowOptions(false)} timeClick={(value) => 
+          setCounterCount(value)} />
+        </>
       </div>
     )
   }
@@ -39,12 +42,12 @@ function Main() {
       {showCounter ? (
         // count is set to the value of timer
         <>
-        <Countdown count={counterCount} />
+        <Countdown onBackClick={() => setShowOptions(true)} count={counterCount} />
         </>
       ) : (
         // on begin press, timer is set to the users time choice
         <AllUserOptions onBeginPress={() => setShowCounter(true)} timeClick={(value) => 
-          setTimer(value)} />
+          setCounterCount(value)} />
       )}
     </div>
   );
