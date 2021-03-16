@@ -1,41 +1,48 @@
 import React, { useState, useEffect } from "react";
-import Loader from "../components/Loader";
-import UserOptions from "../components/UserOptions";
+import OnLoadText from "../components/OnLoadText";
+import AllUserOptions from "../components/AllUserOptions";
 import Countdown from "../components/Countdown";
 
 function Main() {
-  const [loading, setLoading] = useState(true);
+  const [showTitle, setShowTitle] = useState(true)
   const [showCounter, setShowCounter] = useState(false);
-  const [countdown, setCountdown] = useState(5);
-  console.log("🚀 ~ file: main.js ~ line 10 ~ Main ~ countdown", countdown);
+  const [countdown, setCountdown] = useState();
+  const [showOptions, setShowOptions] = useState(false);
 
-  // Use an empty dependency array
-  // to run useEffect once on mount
   useEffect(() => {
     const timer = setTimeout(() => {
-      // hide loader text after two seconds
-      setLoading(false);
+      setShowTitle(false);
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <Loader />;
+
+  if (showTitle) {
+    return (
+      <div className="container">
+        <section className="main-wrapper">
+          <OnLoadText />
+        </section>
+      </div>
+    )
+  }
+  if (showOptions) {
+    return (
+      <div className="options-wrapper">
+        <>
+        <AllUserOptions onBeginPress={() => setShowOptions(false)} timeClick={(value) => 
+          setCountdown(value)} />
+        </>
+      </div>
+    )
   }
   return (
     <div className="main">
-      {/* Here we pass the countdown state as prop count to CountDown */}
       {showCounter ? (
-        <Countdown count={countdown} />
+        <Countdown count={countdown} onBackClick={() => setShowOptions(true)} />
       ) : (
-        <UserOptions
-          onBeginPress={(timerCount) => {
-            setShowCounter(true);
-            // set the correct state of
-            // the selected counter in countdown
-            setCountdown(timerCount);
-          }}
-        />
+        <AllUserOptions onBeginPress={() => setShowCounter(true)} 
+        timeClick={(value) => setCountdown(value)} />
       )}
     </div>
   );

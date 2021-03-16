@@ -4,8 +4,7 @@ function padTime(time) {
   return time.toString().padStart(2, "0");
 }
 
-function Countdown({count, onBackClick}) {
-  console.log({count});
+function Countdown({ count, onBackClick }) {
   const [timeLeft, setTimeLeft] = useState(count * 60);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
@@ -50,9 +49,9 @@ function Countdown({count, onBackClick}) {
         <span>{seconds}</span>
       </div>
       <div className="buttons">
-        {!isRunning && <button className="start-btn" onClick={startTimer}>Start</button>}
-        {isRunning && <button className="stop-btn"  onClick={stopTimer}>Stop</button>}
-        <button className="reset-btn" onClick={resetTimer}>Reset</button>
+        {!isRunning && <button onClick={startTimer}>Start</button>}
+        {isRunning && <button onClick={stopTimer}>Stop</button>}
+        <button onClick={resetTimer}>Reset</button>
       </div>
       <div className="back">
         <button className="back-btn" onClick={onBackClick}>Back</button>
