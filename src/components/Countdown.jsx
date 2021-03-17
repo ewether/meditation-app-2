@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react";
+// import { FaTimes } from 'react-icons/fa'
+import { library } from '@fortawesome/fontawesome-svg-core'
 
 function padTime(time) {
   return time.toString().padStart(2, "0");
@@ -53,8 +55,10 @@ function Countdown({ count, onBackClick }) {
         {isRunning && <button onClick={stopTimer}>Stop</button>}
         <button onClick={resetTimer}>Reset</button>
       </div>
-      <div className="back">
-        <button className="back-btn" onClick={onBackClick}>Back</button>
+      <div className="cancel">
+        <button className="cancel-btn">
+            {/* <FaTimes /> */}
+        </button>
       </div>
     </div>
   );
