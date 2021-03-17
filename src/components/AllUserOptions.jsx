@@ -6,18 +6,11 @@ import Audio3 from '../audio/calm3.mp3'
 import Audio4 from '../audio/calm4.mp3'
 
 function AllUserOptions({ onBeginPress, timeClick }) {
-    const [start, setStart] = useState(false);
     const [beginVisible, setBeginVisible] = useState(false);
 
     let sound1 = new Howl({
         src: [Audio1],
     });
-
-    useEffect(() => {
-        if (start) {
-            setStart();
-        };
-      }, [start]);
 
     function onTimeClick(value) {
         setBeginVisible(true);
@@ -28,7 +21,7 @@ function AllUserOptions({ onBeginPress, timeClick }) {
         <>
             <div className="time-options">
                 <ul>
-                    <li className="time-opt" id="time-opt-5" onClick={() =>  onTimeClick(5)}>
+                    <li className="time-opt" id="time-opt-5" onClick={() => onTimeClick(5)}>
                         5 min
                     </li>
                     <li className="time-opt" id="time-opt-15" onClick={() => onTimeClick(15)}>
@@ -44,8 +37,8 @@ function AllUserOptions({ onBeginPress, timeClick }) {
                     <li className="music-opt" id="music-opt-1">
                         1
                         {/* <audio src="../audio/calm1.mp3" id="audio-1" preload="auto"> */}
-                        <audio src="../audio/calm1.mp3" id="audio-1" preload="auto" onClick={sound1.play()}>
-                        </audio>
+                        {/* <audio src="../audio/calm1.mp3" id="audio-1" preload="auto" onClick={sound1.play()}> */}
+                        {/* </audio> */}
                     </li>
                     <li className="music-opt" id="music-opt-2">
                         2

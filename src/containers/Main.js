@@ -19,11 +19,9 @@ function Main() {
 
   if (showTitle) {
     return (
-      <div className="container">
-        <section className="main-wrapper">
-          <OnLoadText />
-        </section>
-      </div>
+      <>
+        <OnLoadText />
+      </>
     )
   }
   if (showOptions) {
@@ -37,7 +35,7 @@ function Main() {
     )
   }
   return (
-    <div className="main">
+    <div className="options-wrapper">
       {showCounter ? (
         <Countdown count={countdown} onBackClick={() => setShowOptions(true)} />
       ) : (
