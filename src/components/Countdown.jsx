@@ -55,10 +55,8 @@ function Countdown({ count, onBackClick }) {
         {isRunning && <button onClick={stopTimer}>Stop</button>}
         <button onClick={resetTimer}>Reset</button>
       </div>
-      <div className="cancel">
-        <button className="cancel-btn">
-            {/* <FaTimes /> */}
-        </button>
+      <div className="back">
+        <button className="back-btn" onClick={onBackClick}>Back</button>
       </div>
     </div>
   );
