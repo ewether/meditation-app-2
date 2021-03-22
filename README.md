@@ -1,6 +1,6 @@
 # Meditation App
 
-A simple meditation app created using React v17.0.1.
+A simple meditation app where users can choose a time option, a music option, and begin their timed meditation session.
 
 ## Stack
 
