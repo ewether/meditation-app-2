@@ -1,6 +1,6 @@
 # Meditation App
 
-A simple meditation app where users can choose a time option, a music option, and begin their timed meditation session.
+A simple app where users can choose a time option, a music option, and begin their timed meditation session.
 
 ## Stack
 
