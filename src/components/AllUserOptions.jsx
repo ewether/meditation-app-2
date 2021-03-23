@@ -7,7 +7,7 @@ import Audio4 from '../audio/calm4.mp3'
 
 function AllUserOptions({ onBeginPress, timeClick }) {
     const [beginVisible, setBeginVisible] = useState(false);
-    const [play, setPlay] = useState(false);
+    let [play, setPlay] = useState(false);
     const [audioFile, setAudioFile] = useState(Audio2);
     const [loadAudio, setLoadAudio] = useState(false);
 
@@ -18,7 +18,17 @@ function AllUserOptions({ onBeginPress, timeClick }) {
 
     function onMusicClick(musicItem) {
         setAudioFile(musicItem);
-        setPlay(true);
+        // setPlay(true);
+        pause();
+    }
+
+    // if otherMusic setPlay = true, setPlay to false 
+    const pause = () => {
+        if (play = true) {
+            setPlay(false);
+        } else {
+            setPlay(true);
+        }
     }
     
     return (
