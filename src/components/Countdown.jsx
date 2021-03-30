@@ -1,12 +1,12 @@
-import React, { useState, useRef } from "react";
-// import { FaTimes } from 'react-icons/fa'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import React, { useState, useRef, useContext } from "react";
+import { OptionsContext } from "../utils/OptionsManager";
 
 function padTime(time) {
   return time.toString().padStart(2, "0");
 }
 
-function Countdown({ count, onBackClick }) {
+function Countdown({ onBackClick }) {
+  const { count } = useContext(OptionsContext);
   const [timeLeft, setTimeLeft] = useState(count * 60);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);

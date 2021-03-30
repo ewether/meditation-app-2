@@ -8,6 +8,7 @@ function Main() {
   const [showCounter, setShowCounter] = useState(false);
   const [countdown, setCountdown] = useState();
   const [showOptions, setShowOptions] = useState(false);
+  const [playMusic, setPlayMusic] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -16,6 +17,10 @@ function Main() {
     return () => clearTimeout(timer);
   }, []);
 
+  function beginPress() {
+    setShowOptions(false);
+    setPlayMusic(false);
+  }
 
   if (showTitle) {
     return (
@@ -28,7 +33,7 @@ function Main() {
     return (
       <div className="options-wrapper">
         <>
-        <AllUserOptions onBeginPress={() => setShowOptions(false)} timeClick={(value) => 
+        <AllUserOptions onBeginPress={() => beginPress()} timeClick={(value) => 
           setCountdown(value)} />
         </>
       </div>

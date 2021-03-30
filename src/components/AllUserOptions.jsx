@@ -1,47 +1,43 @@
-import React, {useState, useEffect} from 'react';
-import ReactHowler from 'react-howler'
+import React, { useState, useEffect, useContext } from 'react';
+import Headphones from '../icons/headphones.png';
+import { Howl, Howler } from "howler";
 import Audio1 from '../audio/calm1.mp3'
 import Audio2 from '../audio/calm2.mp3'
 import Audio3 from '../audio/calm3.mp3'
 import Audio4 from '../audio/calm4.mp3'
 
+import { OptionsContext } from "../utils/OptionsManager";
+
 function AllUserOptions({ onBeginPress, timeClick }) {
+    const { addCount } = useContext(OptionsContext);
     const [beginVisible, setBeginVisible] = useState(false);
-    let [play, setPlay] = useState(false);
-    const [audioFile, setAudioFile] = useState(Audio2);
-    const [loadAudio, setLoadAudio] = useState(false);
+    let [playing, setPlaying] = useState(null);
 
     function onTimeClick(value) {
+        addCount(value);
         setBeginVisible(true);
         timeClick(value);
     }
 
-    function onMusicClick(musicItem) {
-        setAudioFile(musicItem);
-        // setPlay(true);
-        pause();
+    function playSound(value) {
+        let sound = new Howl({
+          src: value,
+          html5: true,
+        });
+
+    if (playing) {
+        Howler.stop(playing);
+        }
+        let soundId = sound.play();
+        setPlaying(soundId);
     }
 
-    // if otherMusic setPlay = true, setPlay to false 
-    const pause = () => {
-        if (play = true) {
-            setPlay(false);
-        } else {
-            setPlay(true);
-        }
-    }
-    
     return (
         <>
             <div className="time-options">
-                <ReactHowler
-                    src={audioFile}
-                    playing={play}
-                    volume={1.0}
-                    preload
-                    html5={loadAudio}
-                    onLoad={() => setLoadAudio(true)}
-                />
+                <h2 className="time-instruct">
+                    Choose a time option:
+                </h2>
                 <ul>
                     <li className="time-opt" id="time-opt-5" onClick={() => onTimeClick(5)}>
                         5 min
@@ -55,18 +51,21 @@ function AllUserOptions({ onBeginPress, timeClick }) {
                 </ul>
             </div>
             <div className="music-options">
+                <h2 className="music-instruct">
+                    Choose a sound option:
+                </h2>
                 <ul>
-                    <li className="music-opt" id="music-opt-1" onClick={() => onMusicClick(Audio1)}>
-                        1
+                    <li className="music-opt" id="music-opt-1" onClick={() => playSound(Audio1)}>
+                        Zen
                     </li>
-                    <li className="music-opt" id="music-opt-2" onClick={() => onMusicClick(Audio2)}>
-                        2
+                    <li className="music-opt" id="music-opt-2" onClick={() => playSound(Audio2)}>
+                        Rain
                     </li>
-                    <li className="music-opt" id="music-opt-3" onClick={() => onMusicClick(Audio3)}>
-                        3
+                    <li className="music-opt" id="music-opt-3" onClick={() => playSound(Audio3)}>
+                        Ocean
                     </li>
-                    <li className="music-opt" id="music-opt-4" onClick={() => onMusicClick(Audio4)}>
-                        4
+                    <li className="music-opt" id="music-opt-4" onClick={() => playSound(Audio4)}>
+                        Nature
                     </li>
                 </ul>
             </div>
@@ -74,7 +73,9 @@ function AllUserOptions({ onBeginPress, timeClick }) {
                 <button className="begin-button" onClick={onBeginPress}>
                 Begin
                 </button>
-            ) : null}
+            ) : <div className="headphones-wrapper">
+                    <img className="headphones" src={Headphones} />
+                </div>}
         </>
     );
 };
