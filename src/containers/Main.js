@@ -40,14 +40,16 @@ function Main() {
     )
   }
   return (
-    <div className="options-wrapper">
+    <>
       {showCounter ? (
         <Countdown count={countdown} onBackClick={() => setShowOptions(true)} />
       ) : (
-        <AllUserOptions onBeginPress={() => setShowCounter(true)} 
-        timeClick={(value) => setCountdown(value)} />
+        <div className="options-wrapper">
+          <AllUserOptions onBeginPress={() => setShowCounter(true)} 
+          timeClick={(value) => setCountdown(value)} />
+        </div>
       )}
-    </div>
+    </>
   );
 }
 
