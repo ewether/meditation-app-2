@@ -8,10 +8,12 @@ import Audio4 from '../audio/calm4.mp3'
 
 import { OptionsContext } from "../utils/OptionsManager";
 
-function AllUserOptions({ onBeginPress, timeClick }) {
+function AllUserOptions({ initializeTimer, timeClick }) {
     const { addCount } = useContext(OptionsContext);
+    const { passAudioId } = useContext(OptionsContext);
+
     const [beginVisible, setBeginVisible] = useState(false);
-    let [playing, setPlaying] = useState(null);
+    const [playing, setPlaying] = useState(null);
 
     function onTimeClick(value) {
         addCount(value);
@@ -30,6 +32,13 @@ function AllUserOptions({ onBeginPress, timeClick }) {
         }
         let soundId = sound.play();
         setPlaying(soundId);
+        
+        passAudioId(value);
+    }
+
+    function onBeginPress() {
+        initializeTimer();
+        Howler.unload();
     }
 
     return (
@@ -70,11 +79,11 @@ function AllUserOptions({ onBeginPress, timeClick }) {
                 </ul>
             </div>
             {beginVisible ? (
-                <button className="begin-button" onClick={onBeginPress}>
+                <button className="begin-button" onClick={() => onBeginPress()}>
                 Begin
                 </button>
             ) : <div className="headphones-wrapper">
-                    <img className="headphones" src={Headphones} />
+                    <img className="headphones" src={Headphones} alt="headphones" />
                 </div>}
         </>
     );
