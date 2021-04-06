@@ -8,7 +8,6 @@ function Main() {
   const [showCounter, setShowCounter] = useState(false);
   const [countdown, setCountdown] = useState();
   const [showOptions, setShowOptions] = useState(false);
-  const [playMusic, setPlayMusic] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,7 +18,6 @@ function Main() {
 
   function beginPress() {
     setShowOptions(false);
-    setPlayMusic(false);
   }
 
   if (showTitle) {
@@ -33,7 +31,7 @@ function Main() {
     return (
       <div className="options-wrapper">
         <>
-        <AllUserOptions onBeginPress={() => beginPress()} timeClick={(value) => 
+        <AllUserOptions initializeTimer={() => beginPress()} timeClick={(value) => 
           setCountdown(value)} />
         </>
       </div>
@@ -45,7 +43,7 @@ function Main() {
         <Countdown count={countdown} onBackClick={() => setShowOptions(true)} />
       ) : (
         <div className="options-wrapper">
-          <AllUserOptions onBeginPress={() => setShowCounter(true)} 
+          <AllUserOptions initializeTimer={() => setShowCounter(true)} 
           timeClick={(value) => setCountdown(value)} />
         </div>
       )}
