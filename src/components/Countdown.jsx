@@ -86,12 +86,20 @@ function Countdown({ onBackClick }) {
         <span>{seconds}</span>
       </div>
       <div className="buttons">
-        {!isRunning && <button onClick={startTimer}>Start</button>}
+        {!isRunning && (
+          <button className="start-timer-btn" onClick={startTimer}>
+            Start
+          </button>
+        )}
         {isRunning && <button onClick={stopTimer}>Stop</button>}
-        <button onClick={resetTimer}>Reset</button>
+        <button className="reset-timer-btn" onClick={resetTimer}>
+          Reset
+        </button>
       </div>
       <div className="back">
-        <button className="back-btn" onClick={() => backClick()}>Back</button>
+        <button className="back-btn" onClick={() => backClick()}>
+          Back
+        </button>
       </div>
     </div>
   );

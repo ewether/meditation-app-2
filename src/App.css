@@ -176,20 +176,46 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -120px;
-  margin-left: -150px;
+  margin-top: -200px;
+  margin-left: -180px;
   font-size: 32px;
+  background-color: #b8c3d9;
+  border-radius: 8px;
+  padding: 40px;
+}
+
+.start-timer-btn {
+  margin-left: 0;
+}
+
+.reset-timer-btn {
+  margin-left: 15px;
+}
+
+.back {
+  text-align: end;
+}
+
+.back-btn {
+  background-color: #7c8699;
+  color: #fff;
 }
 
 .time-left {
-  font-size: 44px;
+  font-size: 40px;
+  width: 72%;
+  /* background-color: #7c8699; */
+  font-family: 'Fira Sans', sans-serif;
+  margin: auto;
+  border-radius: 5px;
+  padding: 16px;
 }
 
 .buttons {
-  width: 300px;
+  width: 280px;
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 50px;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .start-btn, .stop-btn, .reset-btn {
