@@ -9,8 +9,7 @@ import Audio4 from '../audio/calm4.mp3'
 import { OptionsContext } from "../utils/OptionsManager";
 
 function AllUserOptions({ initializeTimer, timeClick }) {
-    const { addCount } = useContext(OptionsContext);
-    const { passAudioId } = useContext(OptionsContext);
+    const { addCount, passAudioId, setAudioSrc, setAudio } = useContext(OptionsContext);
 
     const [beginVisible, setBeginVisible] = useState(false);
     const [playing, setPlaying] = useState(null);
@@ -22,23 +21,26 @@ function AllUserOptions({ initializeTimer, timeClick }) {
     }
 
     function playSound(value) {
-        let sound = new Howl({
-          src: value,
-          html5: true,
-        });
+        setAudioSrc(value);
+        setAudio(value);
+        // let sound = new Howl({
+        //   src: value,
+        //   html5: true,
+        // });
 
-    if (playing) {
-        Howler.stop(playing);
-        }
-        let soundId = sound.play();
-        setPlaying(soundId);
+    // if (playing) {
+        // Howler.stop(playing);
+        // }
+        // let soundId = sound.play();
+        // setPlaying(soundId);
         
-        passAudioId(value);
+        // passAudioId(value);
     }
 
     function onBeginPress() {
         initializeTimer();
         Howler.unload();
+        setAudioSrc(null);
     }
 
     return (
