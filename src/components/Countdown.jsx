@@ -1,5 +1,9 @@
 import React, { useState, useRef, useContext } from "react";
 import { Howl, Howler } from "howler";
+import Audio1 from "../audio/calm1.mp3";
+import Audio2 from "../audio/calm2.mp3";
+import Audio3 from "../audio/calm3.mp3";
+import Audio4 from "../audio/calm4.mp3";
 import { OptionsContext } from "../utils/OptionsManager";
 
 function padTime(time) {
@@ -7,8 +11,7 @@ function padTime(time) {
 }
 
 function Countdown({ onBackClick }) {
-  const { count } = useContext(OptionsContext);
-  const { audio } = useContext(OptionsContext);
+  const { count, setAudioSrc, audioSrc, audio, setAudio } = useContext(OptionsContext);
 
   const [timeLeft, setTimeLeft] = useState(count * 60);
   const [isRunning, setIsRunning] = useState(false);
@@ -16,16 +19,18 @@ function Countdown({ onBackClick }) {
   const [playing, setPlaying] = useState(null);
 
   function playSound(value) {
-      let sound = new Howl({
-        src: value,
-        html5: true,
-      });
+    setAudioSrc(audio);
+    setPlaying(true);
+      // let sound = new Howl({
+      //   src: value,
+      //   html5: true,
+      // });
 
-      if (playing) {
-        Howler.stop(playing);
-      }
-      let soundId = sound.play();
-      setPlaying(soundId);
+    // if (playing) {
+      // Howler.play();
+    // }
+      // let soundId = sound.play();
+      // setPlaying(soundId);
   }
 
   function startTimer() {
@@ -41,7 +46,7 @@ function Countdown({ onBackClick }) {
       });
     }, 1000);
 
-    playSound(audio);
+    playSound();
   }
 
   function stopTimer() {
@@ -86,12 +91,20 @@ function Countdown({ onBackClick }) {
         <span>{seconds}</span>
       </div>
       <div className="buttons">
-        {!isRunning && <button onClick={startTimer}>Start</button>}
+        {!isRunning && (
+          <button className="start-timer-btn" onClick={startTimer}>
+            Start
+          </button>
+        )}
         {isRunning && <button onClick={stopTimer}>Stop</button>}
-        <button onClick={resetTimer}>Reset</button>
+        <button className="reset-timer-btn" onClick={resetTimer}>
+          Reset
+        </button>
       </div>
       <div className="back">
-        <button className="back-btn" onClick={() => backClick()}>Back</button>
+        <button className="back-btn" onClick={() => backClick()}>
+          Back
+        </button>
       </div>
     </div>
   );
