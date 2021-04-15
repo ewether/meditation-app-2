@@ -16,6 +16,9 @@ function Main() {
     return () => clearTimeout(timer);
   }, []);
 
+  function beginPress() {
+    setShowOptions(false);
+  }
 
   if (showTitle) {
     return (
@@ -28,21 +31,23 @@ function Main() {
     return (
       <div className="options-wrapper">
         <>
-        <AllUserOptions onBeginPress={() => setShowOptions(false)} timeClick={(value) => 
+        <AllUserOptions initializeTimer={() => beginPress()} timeClick={(value) => 
           setCountdown(value)} />
         </>
       </div>
     )
   }
   return (
-    <div className="options-wrapper">
+    <>
       {showCounter ? (
         <Countdown count={countdown} onBackClick={() => setShowOptions(true)} />
       ) : (
-        <AllUserOptions onBeginPress={() => setShowCounter(true)} 
-        timeClick={(value) => setCountdown(value)} />
+        <div className="options-wrapper">
+          <AllUserOptions initializeTimer={() => setShowCounter(true)} 
+          timeClick={(value) => setCountdown(value)} />
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

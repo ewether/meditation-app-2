@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import Headphones from "../icons/headphones.png";
 import { Howl, Howler } from "howler";
 import Audio1 from "../audio/calm1.mp3";
 import Audio2 from "../audio/calm2.mp3";
@@ -7,8 +8,11 @@ import Audio4 from "../audio/calm4.mp3";
 
 import { OptionsContext } from "../utils/OptionsManager";
 
-function AllUserOptions({ onBeginPress, timeClick }) {
-  const { addCount } = useContext(OptionsContext);
+function AllUserOptions({ initializeTimer, timeClick }) {
+  const { addCount, passAudioId, setAudioSrc, setAudio } = useContext(
+    OptionsContext
+  );
+
   const [beginVisible, setBeginVisible] = useState(false);
   const [playing, setPlaying] = useState(null);
 
@@ -19,22 +23,32 @@ function AllUserOptions({ onBeginPress, timeClick }) {
   }
 
   function playSound(value) {
-    let sound = new Howl({
-      src: value,
-      html5: true,
-    });
+    setAudioSrc(value);
+    setAudio(value);
+    // let sound = new Howl({
+    //   src: value,
+    //   html5: true,
+    // });
 
-    if (playing) {
-      Howler.stop(playing);
-    }
-    let soundId = sound.play();
+    // if (playing) {
+    // Howler.stop(playing);
+    // }
+    // let soundId = sound.play();
+    // setPlaying(soundId);
 
-    setPlaying(soundId);
+    // passAudioId(value);
+  }
+
+  function onBeginPress() {
+    initializeTimer();
+    Howler.unload();
+    setAudioSrc(null);
   }
 
   return (
     <>
       <div className="time-options">
+        <h2 className="time-instruct">Choose a time option:</h2>
         <ul>
           <li
             className="time-opt"
@@ -60,42 +74,47 @@ function AllUserOptions({ onBeginPress, timeClick }) {
         </ul>
       </div>
       <div className="music-options">
+        <h2 className="music-instruct">Choose a sound option:</h2>
         <ul>
           <li
             className="music-opt"
             id="music-opt-1"
             onClick={() => playSound(Audio1)}
           >
-            1
+            Zen
           </li>
           <li
             className="music-opt"
             id="music-opt-2"
             onClick={() => playSound(Audio2)}
           >
-            2
+            Rain
           </li>
           <li
             className="music-opt"
             id="music-opt-3"
             onClick={() => playSound(Audio3)}
           >
-            3
+            Ocean
           </li>
           <li
             className="music-opt"
             id="music-opt-4"
             onClick={() => playSound(Audio4)}
           >
-            4
+            Nature
           </li>
         </ul>
       </div>
       {beginVisible ? (
-        <button className="begin-button" onClick={onBeginPress}>
+        <button className="begin-button" onClick={() => onBeginPress()}>
           Begin
         </button>
-      ) : null}
+      ) : (
+        <div className="headphones-wrapper">
+          <img className="headphones" src={Headphones} alt="headphones" />
+        </div>
+      )}
     </>
   );
 }
