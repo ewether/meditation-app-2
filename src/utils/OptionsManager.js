@@ -9,72 +9,63 @@ export const OptionsContext = createContext();
 
 export const OptionsContextProvider = ({ children }) => {
   const [count, setCount] = useState(30);
-  const [audio, setAudio] = useState(null);
-  const [audioSrc, setAudioSrc] = useState(null);
-  const [playing, setPlaying] = useState(false);
-  const [id, setId] = useState(null);
+  const [sound, setSound] = useState(null);
+  const [soundId, setSoundId] = useState(null);
+  const [previousSound, setPreviousSound] = useState(null);
 
-  useEffect(() => {}, []);
+  const playSound = (option) => {
+    Howler.unload();
+    if (option) {
+      setPreviousSound(option);
+    }
+    switch (option) {
+      case "zen":
+        setSound(Audio1);
+        break;
+      case "rain":
+        setSound(Audio2);
+        break;
+      case "ocean":
+        setSound(Audio3);
+        break;
+      case "nature":
+        setSound(Audio4);
+        break;
+      default:
+        setSound(null);
+        break;
+    }
+  };
+
+  const stopSound = () => {
+    Howler.stop();
+    setSound(null);
+  };
+
+  const resetCount = () => setCount(30); // resets count to default 30 mins
 
   useEffect(() => {
-    console.log(audioSrc);
-
-    if (audioSrc) {
-      let sound = new Howl({
-        src: audioSrc,
+    if (sound) {
+      let audio = new Howl({
+        src: sound,
         html5: true,
       });
-
-      let soundId = sound.play();
-      setId(soundId);
+      let id = audio.play();
+      setSoundId(id);
+      return;
     }
-
-    // if (playing) {
-    // Howler.stop(playing);
-    // }
-    // setPlaying(soundId);
-  }, [audioSrc]);
-  // useEffect is triggered any time audioSrc state changes
-
-  useEffect(() => {
-    if (playing) {
-      Howler.stop(id);
-    }
-
-    let newSoundId = id;
-
-    if (newSoundId) {
-      newSoundId.play();
-    }
-  }, [playing, id]);
-
-  const addCount = (time) => {
-    console.log(time);
-
-    setCount(time);
-  };
-
-  const resetCount = () => setCount(30);
-
-  const passAudioId = (value) => {
-    if (value) {
-      setAudio(value);
-    }
-
-    console.log(value);
-  };
+  }, [sound]); // useEffect is triggered any time sound state changes
 
   return (
     <OptionsContext.Provider
       value={{
         count,
-        addCount,
+        setCount,
         resetCount,
-        passAudioId,
-        audio,
-        setAudioSrc,
-        setAudio,
-        setPlaying,
+        soundId,
+        playSound,
+        stopSound,
+        previousSound,
       }}
     >
       {children}

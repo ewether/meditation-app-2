@@ -4,7 +4,7 @@ import AllUserOptions from "../components/AllUserOptions";
 import Countdown from "../components/Countdown";
 
 function Main() {
-  const [showTitle, setShowTitle] = useState(true)
+  const [showTitle, setShowTitle] = useState(true);
   const [showCounter, setShowCounter] = useState(false);
   const [countdown, setCountdown] = useState();
   const [showOptions, setShowOptions] = useState(false);
@@ -16,26 +16,26 @@ function Main() {
     return () => clearTimeout(timer);
   }, []);
 
-  function beginPress() {
-    setShowOptions(false);
-  }
-
+  // Start with loader
   if (showTitle) {
     return (
       <>
         <OnLoadText />
       </>
-    )
+    );
   }
+  // Display sound and time options
   if (showOptions) {
     return (
       <div className="options-wrapper">
         <>
-        <AllUserOptions initializeTimer={() => beginPress()} timeClick={(value) => 
-          setCountdown(value)} />
+          <AllUserOptions
+            showTimer={() => setShowCounter((state) => !state)}
+            timeClick={(value) => setCountdown(value)}
+          />
         </>
       </div>
-    )
+    );
   }
   return (
     <>
@@ -43,8 +43,10 @@ function Main() {
         <Countdown count={countdown} onBackClick={() => setShowOptions(true)} />
       ) : (
         <div className="options-wrapper">
-          <AllUserOptions initializeTimer={() => setShowCounter(true)} 
-          timeClick={(value) => setCountdown(value)} />
+          <AllUserOptions
+            showTimer={() => setShowCounter(true)}
+            timeClick={(value) => setCountdown(value)}
+          />
         </div>
       )}
     </>
