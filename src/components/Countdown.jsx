@@ -11,7 +11,9 @@ function padTime(time) {
 }
 
 function Countdown({ onBackClick }) {
-  const { count, setAudioSrc, audioSrc, audio, setAudio } = useContext(OptionsContext);
+  const { count, setAudioSrc, audioSrc, audio, setAudio } = useContext(
+    OptionsContext
+  );
 
   const [timeLeft, setTimeLeft] = useState(count * 60);
   const [isRunning, setIsRunning] = useState(false);
@@ -21,16 +23,16 @@ function Countdown({ onBackClick }) {
   function playSound(value) {
     setAudioSrc(audio);
     setPlaying(true);
-      // let sound = new Howl({
-      //   src: value,
-      //   html5: true,
-      // });
+    // let sound = new Howl({
+    //   src: value,
+    //   html5: true,
+    // });
 
     // if (playing) {
-      // Howler.play();
+    // Howler.play();
     // }
-      // let soundId = sound.play();
-      // setPlaying(soundId);
+    // let soundId = sound.play();
+    // setPlaying(soundId);
   }
 
   function startTimer() {
@@ -101,15 +103,10 @@ function Countdown({ onBackClick }) {
           Reset
         </button>
       </div>
-<<<<<<< HEAD
-      <div className="cancel">
-        <button className="cancel-btn">{/* <FaTimes /> */}</button>
-=======
       <div className="back">
         <button className="back-btn" onClick={() => backClick()}>
           Back
         </button>
->>>>>>> origin
       </div>
     </div>
   );
