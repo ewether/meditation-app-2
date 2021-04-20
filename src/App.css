@@ -31,7 +31,7 @@ button {
 }
 
 button:hover {
-  background-color: #fcfcfc;
+  background-color: #fafafa;
   cursor: pointer;
 }
 
@@ -170,7 +170,7 @@ body {
 }
 
 .begin-button:hover {
-  background-color: #fcfcfc;
+  background-color: #fafafa;
   cursor: pointer;
 }
 
@@ -205,10 +205,13 @@ body {
   color: #fff;
 }
 
+.back-btn:hover {
+  background-color: #757e8f;
+}
+
 .time-left {
   font-size: 40px;
   width: 72%;
-  /* background-color: #7c8699; */
   font-family: 'Fira Sans', sans-serif;
   margin: auto;
   border-radius: 5px;
