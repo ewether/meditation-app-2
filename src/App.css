@@ -89,6 +89,7 @@ body {
   color: #FFF;
   background-color: #b8c3d9;
   border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.2) 0px 6px 12px -2px, rgba(0, 0, 0, 0.2) 0px 3px 7px -3px;
 }
 
 .time-instruct {
@@ -107,6 +108,7 @@ body {
   padding: 18px 14px;
   border-radius: 5px;
   background-color: #7c8699;
+  /* box-shadow: rgba(50, 50, 43, 0.1) 0px 6px 6px -2px, rgba(0, 0, 0, 0.2) 0px 3px 7px -3px; */
 }
 
 .time-opt:hover, .music-opt:hover {
@@ -133,6 +135,7 @@ body {
   padding: 38px 20px;
   border-radius: 5px;
   background-color: #7c8699;
+  /* box-shadow: rgba(50, 50, 43, 0.1) 0px 6px 6px -2px, rgba(0, 0, 0, 0.2) 0px 3px 7px -3px; */
 }
 
 #music-opt-3, #music-opt-4 {
@@ -182,6 +185,7 @@ body {
   background-color: #b8c3d9;
   border-radius: 8px;
   padding: 40px;
+  box-shadow: rgba(50, 50, 93, 0.2) 0px 6px 12px -2px, rgba(0, 0, 0, 0.2) 0px 3px 7px -3px;
 }
 
 .start-timer-btn {

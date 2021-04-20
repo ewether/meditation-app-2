@@ -30,7 +30,7 @@ function Main() {
       <div className="options-wrapper">
         <>
           <AllUserOptions
-            showTimer={() => setShowCounter((state) => !state)}
+            showTimer={() => setShowOptions((state) => !state)}
             timeClick={(value) => setCountdown(value)}
           />
         </>
@@ -44,7 +44,7 @@ function Main() {
       ) : (
         <div className="options-wrapper">
           <AllUserOptions
-            showTimer={() => setShowCounter(true)}
+            showTimer={() => setShowCounter((state) => !state)}
             timeClick={(value) => setCountdown(value)}
           />
         </div>
